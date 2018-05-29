@@ -1,16 +1,19 @@
-from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, DetailView, CreateView
+
 from .models import Post
 
 
-def home(request):
+class PostList(ListView):
+    model = Post
     template_name = 'home.html'
-    posts = Post.objects.all()
-    context_data = {'object_list': posts}
-    return render(request, template_name, context_data)
 
 
-def detail(request, pk):
+class PostDetail(DetailView):
+    model = Post
     template_name = 'detail.html'
-    post = get_object_or_404(Post, id=pk)
-    context_data = {'object': post}
-    return render(request, template_name, context_data)
+
+
+class PostCreate(CreateView):
+    model = Post
+    template_name = 'create.html'
+    fields = ['category', 'title', 'content']
