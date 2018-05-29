@@ -1,5 +1,4 @@
-from django.shortcuts import redirect, render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from board.blog.forms import PostForm
 from .models import Post
@@ -21,16 +20,7 @@ class PostCreate(CreateView):
     form_class = PostForm
 
 
-def update(request, pk):
-    if request.method == "POST":
-        # 수정 저장
-        post = Post.objects.get(pk=pk)
-        form = PostForm(request.POST, instance=post)
-        if form.is_valid():
-            form.save()
-            return redirect(post)
-    else:
-        # 수정 입력
-        post = Post.objects.get(pk=pk)
-        form = PostForm(instance=post)
-        return render(request, 'create.html', {'object': post, 'form': form})
+class PostUpdate(UpdateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'create.html'
