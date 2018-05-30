@@ -4,7 +4,10 @@
     <div class="posts">
         {% for object in object_list %}
             {% include '_post.html' %}
-            <hr />
+            {% if post.photo %}
+                <img src="{{ post.photo }}" style="width:50px;">
+            {% endif %}
+            <hr/>
         {% endfor %}
     </div>
 {% endblock %}
