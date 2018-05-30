@@ -1,4 +1,4 @@
-from django.urls import re_path
+from django.urls import re_path, path
 
 from board.blog.views import PostList, PostDetail, PostCreate, PostUpdate, PostDelete
 
@@ -10,4 +10,5 @@ urlpatterns = [
     re_path(r'(?P<pk>\d+)/$', PostDetail.as_view(), name='detail'),
     re_path(r'(?P<pk>\d+)/update$', PostUpdate.as_view(), name='update'),
     re_path(r'(?P<pk>\d+)/delete$', PostDelete.as_view(), name='delete'),
+    # path('', PostComment.as_view(), name='comment'),
 ]

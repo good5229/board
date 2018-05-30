@@ -22,6 +22,7 @@ class Post(models.Model):
     title = models.CharField(verbose_name=u'제목', max_length=256)
     content = models.TextField(u'내용', blank=True, default='')
     created = models.DateTimeField(auto_now_add=True, verbose_name=u'생성일')
+    photo = models.ImageField(u'이미지', blank=True, null=True, default='', upload_to='media/')
 
     def __unicode__(self):
         return self.title

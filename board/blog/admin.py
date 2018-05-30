@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from .models import Category, Post
 
 
@@ -11,7 +10,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['id','category', 'title', 'created']
+    list_display = ['id','category', 'title', 'created', 'photo']
     list_filter = ['category']
     list_editable = ['category']
     list_display_links = ['id', 'title']
